@@ -5,7 +5,7 @@ import { MapPin, ArrowDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <Section id="accueil" className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 relative overflow-hidden text-center !px-0 !max-w-none !mx-0 bg-pine-deep">
+    <Section id="accueil" noOffset={true} className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 relative overflow-hidden text-center !px-0 !max-w-none !mx-0 bg-pine-deep">
       
       {/* Background Image with Parallax-like feel and Dark Overlay */}
       <div className="absolute inset-0 z-0 bg-pine-deep">
@@ -21,8 +21,8 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center px-6">
         {/* Logo */}
-        <div className="mb-8">
-          <img src="/images/logo.png" alt="Maison Vélocio Logo" className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-2xl brightness-0 invert" />
+        <div className="mb-8 bg-parchment/10 p-4 rounded-full backdrop-blur-sm border border-parchment/20 shadow-xl">
+          <img src="/images/logo.png" alt="Maison Vélocio Logo" className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-2xl" />
         </div>
 
         <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-display text-parchment leading-none mb-6 tracking-tight drop-shadow-lg">

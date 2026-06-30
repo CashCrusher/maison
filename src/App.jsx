@@ -9,11 +9,13 @@ import Reviews from './components/sections/Reviews'
 import PracticalInfo from './components/sections/PracticalInfo'
 import Social from './components/sections/Social'
 import Footer from './components/sections/Footer'
+import ReviewPopup from './components/ui/ReviewPopup'
 
 function App() {
   return (
     <div className="relative min-h-screen">
       <ElevationProfile />
+      <ReviewPopup />
       
       <main className="relative z-10">
         <Hero />
