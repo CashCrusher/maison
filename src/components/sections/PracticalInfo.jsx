@@ -1,7 +1,21 @@
 import React from 'react';
 import Section from '../ui/Section';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import { MapPin } from 'lucide-react';
+import { renderToString } from 'react-dom/server';
+
+// Create a custom icon using a standard HTML string for Leaflet
+const customIcon = new L.DivIcon({
+  html: `<div style="background-color: #C9A227; width: 24px; height: 24px; border-radius: 50%; border: 3px solid #1A1A16; box-shadow: 0 0 10px rgba(0,0,0,0.3);"></div>`,
+  className: 'custom-leaflet-icon',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+});
 
 export default function PracticalInfo() {
+  const position = [48.6798, 1.9806]; // Coordinates for 13 Grande Rue, Dampierre-en-Yvelines
+
   return (
     <Section id="contact" className="py-24 border-t border-paper-line">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -36,7 +50,6 @@ export default function PracticalInfo() {
             
             <div>
               <h3 className="font-mono text-sm tracking-widest uppercase text-pine-deep mb-3">Horaires</h3>
-              {/* TODO: confirmer horaires exactes avec le client */}
               <table className="w-full max-w-sm text-lg text-espresso font-body">
                 <tbody>
                   <tr className="border-b border-paper-line/50">
@@ -54,21 +67,23 @@ export default function PracticalInfo() {
           </div>
         </div>
 
-        <div className="h-[400px] lg:h-auto bg-paper-line/30 flex items-center justify-center border border-paper-line relative overflow-hidden">
-          {/* Aesthetic grid background behind the map in case it's loading */}
-          <div className="absolute inset-0 opacity-[0.03] z-0" style={{ backgroundImage: 'linear-gradient(var(--pine-deep) 1px, transparent 1px), linear-gradient(90deg, var(--pine-deep) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-          
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d2634.3312953259976!2d1.9806877768820624!3d48.67980861324707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e68198f3cc7705%3A0xe103632cf4b9a13b!2s13%20Grande%20Rue%2C%2078720%20Dampierre-en-Yvelines!5e0!3m2!1sfr!2sfr!4v1709210000000!5m2!1sfr!2sfr" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full z-10 grayscale-[20%] contrast-100 opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
-            title="Maison Vélocio sur Google Maps"
-          ></iframe>
+        <div className="h-[400px] lg:h-auto bg-paper-line/30 flex items-center justify-center border border-paper-line relative overflow-hidden rounded-xl shadow-inner z-0">
+          <MapContainer 
+            center={position} 
+            zoom={15} 
+            scrollWheelZoom={false} 
+            className="w-full h-full absolute inset-0 z-10 grayscale-[30%] contrast-125 sepia-[10%] hover:grayscale-0 hover:sepia-0 transition-all duration-700"
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position} icon={customIcon}>
+              <Popup className="font-body text-pine-deep font-medium">
+                Maison Vélocio<br />13 Grande Rue, Dampierre
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
         
       </div>

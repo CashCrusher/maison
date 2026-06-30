@@ -1,50 +1,53 @@
 import React from 'react';
 import Section from '../ui/Section';
 import Badge from '../ui/Badge';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <Section id="accueil" className="min-h-screen flex flex-col justify-center pt-32 pb-16">
-      <div className="max-w-3xl">
-        <div className="flex flex-wrap gap-4 mb-8">
+    <Section id="accueil" className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 relative overflow-hidden text-center !px-0 !max-w-none !mx-0">
+      
+      {/* Background Image with Parallax-like feel and Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/gallery-2.jpg" 
+          alt="Maison Vélocio Terrasse" 
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-pine-deep/70 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-pine-deep via-transparent to-transparent opacity-80"></div>
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center px-6">
+        {/* Logo */}
+        <div className="mb-8">
+          <img src="/images/logo.png" alt="Maison Vélocio Logo" className="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-2xl brightness-0 invert" />
+        </div>
+
+        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-display text-parchment leading-none mb-6 tracking-tight drop-shadow-lg">
+          Maison<br/>
+          <span className="italic text-trail-ochre">Vélocio</span>
+        </h1>
+        
+        <p className="text-xl md:text-3xl text-parchment/90 max-w-2xl mb-12 leading-relaxed font-body font-light">
+          Le café des cyclistes et randonneurs au cœur de la Vallée de Chevreuse.
+        </p>
+        
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           <Badge rotation={-2}>★ 5.0 · 12 AVIS</Badge>
           <Badge rotation={1}>€1–10</Badge>
           <Badge rotation={-1} className="flex items-center gap-1.5">
             <MapPin size={12} />
-            DAMPIERRE-EN-YVELINES
+            DAMPIERRE
           </Badge>
         </div>
         
-        {/* Logo - Points to public/images/logo.png */}
-        <div className="mb-6">
-          <img src="/images/logo.png" alt="Maison Vélocio Logo" className="w-32 h-32 md:w-40 md:h-40 object-contain" />
-        </div>
-
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-display text-ink leading-none mb-6 tracking-tight">
-          Maison<br/>
-          <span className="italic">Vélocio</span>
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-espresso/80 max-w-xl mb-12 leading-relaxed">
-          Le café des cyclistes et randonneurs au cœur de la Vallée de Chevreuse.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-6">
-          <a 
-            href="#contact" 
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-pine-deep text-parchment font-body font-medium transition-transform hover:-translate-y-1"
-          >
-            Nous trouver
-            <ArrowRight size={18} />
-          </a>
-          <a 
-            href="#services" 
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-paper-line text-espresso font-body font-medium transition-colors hover:bg-paper-line/50"
-          >
-            Voir nos services vélo
-          </a>
-        </div>
+        <a 
+          href="#a-propos" 
+          className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-parchment/30 text-parchment transition-all hover:bg-parchment hover:text-pine-deep hover:scale-110 animate-bounce"
+        >
+          <ArrowDown size={24} />
+        </a>
       </div>
     </Section>
   );
