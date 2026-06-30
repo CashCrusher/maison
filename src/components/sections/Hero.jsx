@@ -5,16 +5,17 @@ import { MapPin, ArrowDown } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <Section id="accueil" className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 relative overflow-hidden text-center !px-0 !max-w-none !mx-0">
+    <Section id="accueil" className="min-h-screen flex flex-col items-center justify-center pt-32 pb-16 relative overflow-hidden text-center !px-0 !max-w-none !mx-0 bg-pine-deep">
       
       {/* Background Image with Parallax-like feel and Dark Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-pine-deep">
         <img 
           src="/images/gallery-2.jpg" 
           alt="Maison Vélocio Terrasse" 
           className="w-full h-full object-cover object-center"
+          onError={(e) => { e.target.style.display = 'none'; }}
         />
-        <div className="absolute inset-0 bg-pine-deep/70 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-pine-deep/50 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-pine-deep via-transparent to-transparent opacity-80"></div>
       </div>
 

@@ -14,7 +14,7 @@ const customIcon = new L.DivIcon({
 });
 
 export default function PracticalInfo() {
-  const position = [48.6798, 1.9806]; // Coordinates for 13 Grande Rue, Dampierre-en-Yvelines
+  const position = [48.7042, 1.9836]; // Coordinates for 13 Grande Rue, Dampierre-en-Yvelines
 
   return (
     <Section id="contact" className="py-24 border-t border-paper-line">
@@ -68,9 +68,15 @@ export default function PracticalInfo() {
         </div>
 
         <div className="h-[400px] lg:h-auto bg-paper-line/30 flex items-center justify-center border border-paper-line relative overflow-hidden rounded-xl shadow-inner z-0">
+          
+          {/* Notification bubble floating over the map */}
+          <div className="absolute top-4 right-4 z-20 bg-pine-deep text-parchment px-4 py-2 rounded-full shadow-lg font-mono text-xs uppercase tracking-wider flex items-center gap-2 animate-bounce cursor-pointer hover:bg-espresso transition-colors">
+            <span>🚲 Stand de réparation inclus</span>
+          </div>
+
           <MapContainer 
             center={position} 
-            zoom={15} 
+            zoom={16} 
             scrollWheelZoom={false} 
             className="w-full h-full absolute inset-0 z-10 grayscale-[30%] contrast-125 sepia-[10%] hover:grayscale-0 hover:sepia-0 transition-all duration-700"
           >
@@ -79,8 +85,13 @@ export default function PracticalInfo() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position} icon={customIcon}>
-              <Popup className="font-body text-pine-deep font-medium">
-                Maison Vélocio<br />13 Grande Rue, Dampierre
+              <Popup className="font-body text-pine-deep font-medium rounded-lg">
+                <div className="text-center p-1">
+                  <strong>Maison Vélocio</strong><br />13 Grande Rue, Dampierre
+                  <a href="https://g.page/r/CbsRobn0sQPBEBM/review" target="_blank" rel="noreferrer" className="block mt-2 text-xs text-parchment bg-pine-deep px-2 py-1 rounded hover:bg-trail-ochre transition-colors text-decoration-none">
+                    ⭐ Laissez-nous un avis
+                  </a>
+                </div>
               </Popup>
             </Marker>
           </MapContainer>
