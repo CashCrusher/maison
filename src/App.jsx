@@ -10,14 +10,18 @@ import PracticalInfo from './components/sections/PracticalInfo'
 import Social from './components/sections/Social'
 import Footer from './components/sections/Footer'
 import ReviewPopup from './components/ui/ReviewPopup'
+import BookingPopup from './components/ui/BookingPopup'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 function App() {
   return (
-    <div className="relative min-h-screen">
-      <ElevationProfile />
-      <ReviewPopup />
-      
-      <main className="relative z-10">
+    <PayPalScriptProvider options={{ "client-id": "test", currency: "EUR" }}>
+      <div className="relative min-h-screen">
+        <ElevationProfile />
+        <ReviewPopup />
+        <BookingPopup />
+        
+        <main className="relative z-10">
         <Hero />
         <CafeMenu />
         <Gallery />
@@ -29,7 +33,8 @@ function App() {
       </main>
 
       <Footer />
-    </div>
+      </div>
+    </PayPalScriptProvider>
   )
 }
 
