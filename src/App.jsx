@@ -15,7 +15,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 function App() {
   return (
-    <PayPalScriptProvider options={{ "client-id": "test", currency: "EUR" }}>
+    <PayPalScriptProvider options={{ "client-id": "AVz-AWB3UWHv-7EhpRqG5_Rql2lMkjvCY7c0Fat4KMte8GZc70Oqwk_I1Dn0xUqkTs0ehvX2EBnJni66", currency: "EUR" }}>
       <div className="relative min-h-screen">
         <ElevationProfile />
         <ReviewPopup />
