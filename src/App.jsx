@@ -11,6 +11,7 @@ import Social from './components/sections/Social'
 import Footer from './components/sections/Footer'
 import ReviewPopup from './components/ui/ReviewPopup'
 import BookingPopup from './components/ui/BookingPopup'
+import BookingSection from './components/sections/BookingSection'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <CafeMenu />
         <Gallery />
         <BikeServices />
+        <BookingSection />
         <About />
         <Reviews />
         <Social />
